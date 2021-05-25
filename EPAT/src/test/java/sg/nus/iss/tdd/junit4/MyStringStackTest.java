@@ -57,12 +57,11 @@ public class MyStringStackTest {
   public void testPop2() {
     String o1;
     MyStringStack stack = new MyStringStack();
-    assertTrue("Initial Stack state", stack.isEmpty());
+    assertTrue("Initial stack state should be empty", stack.isEmpty());
     try {
       o1 = stack.pop();
       fail("Failed pop()");
-    } catch (IndexOutOfBoundsException e) {
-    }
+    } catch (IndexOutOfBoundsException e) {}
 
     stack.push(s1);
     assertFalse("Stack should not be empty after push()", stack.isEmpty());

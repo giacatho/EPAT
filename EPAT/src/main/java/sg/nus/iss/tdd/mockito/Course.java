@@ -1,30 +1,30 @@
 package sg.nus.iss.tdd.mockito;
 
 public class Course {
-	private String courseName;
-	private INameList attendees;
-	
-	public Course(INameList attendeeList) {
-		this.attendees = attendeeList;
-	}
+  private String courseName;
+  private INameList attendees;
 
-	public void addAttendee(String name) {
-		attendees.addName(name);
-	}
+  public Course(INameList attendeeList) {
+    this.attendees = attendeeList;
+  }
 
-	public void clearAttendeesList() {
-		attendees.clear();
-	}
+  public void addAttendee(String name) {
+    attendees.addName(name);
+  }
 
-	public String getAttendee(int i) {
-		return attendees.getName(i);
-	}
+  public void clearAttendeesList() {
+    attendees.clear();
+  }
 
-	public String getCourseName() {
-		return courseName;
-	}
+  public String getAttendee(int i) {
+    return attendees.getName(i);
+  }
 
-	public void setCourseName(String courseName) {
-		this.courseName = courseName;
-	}
+  public String getCourseName() {
+    return courseName;
+  }
+
+  public void setCourseName(String courseName) {
+    this.courseName = courseName;
+  }
 }

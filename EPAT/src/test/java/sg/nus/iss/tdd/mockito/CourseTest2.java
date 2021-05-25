@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TestCourse {
+public class CourseTest2 {
 	private INameList mockedList;
 	private Course course;
 	
@@ -20,21 +20,21 @@ public class TestCourse {
 	}
 	
 	@Test
-	public void testAddAttendee() {
+	public void adding_attendee_calls_respective_addName() {
 		course.addAttendee("Jennifer");
 		
 		verify(mockedList).addName("Jennifer");
 	}
 	
 	@Test
-	public void testClearAttendee() {
+	public void clearing_addtendee_list_call_respective_clear() {
 		course.clearAttendeesList();
 		
 		verify(mockedList).clear();
 	}
 	
 	@Test
-	public void testGetAttendee() {
+	public void getting_attendee_calls_respective_getName() {
 		when(mockedList.getName(0))
 			.thenReturn("Alice");
 		when(mockedList.getName(1))
