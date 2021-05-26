@@ -1,6 +1,7 @@
 package sg.nus.iss.refactor.stage4.replace_with_strategy;
 
-public class RegularRentalPriceComputer implements IRentalPriceComputer {
+public class RegularRentalPriceComputer 
+    implements IRentalPriceComputer {
   @Override
   public double computePrice(int daysRented) {
     double thisAmount = 2;
@@ -10,5 +11,4 @@ public class RegularRentalPriceComputer implements IRentalPriceComputer {
     
     return thisAmount;
   }
-
 }

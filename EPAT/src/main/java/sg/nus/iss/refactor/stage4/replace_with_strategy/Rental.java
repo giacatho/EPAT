@@ -4,13 +4,12 @@ public class Rental {
   private Movie _movie;
   private int _daysRented;
   // Refactored: keep a reference of IRentalPriceComputer,
-  // which will computes the price instead of complex switch-case statements
+  // which will compute the price instead of complex switch-case statements
   private IRentalPriceComputer _rentalPriceComputer;
   
   public Rental(Movie movie, int daysRented) {
     _movie = movie;
     _daysRented = daysRented;
-    
     // Refactored: set the right IRentalPriceComputer
     setRentalPriceComputer(_movie.getCategory());
   }

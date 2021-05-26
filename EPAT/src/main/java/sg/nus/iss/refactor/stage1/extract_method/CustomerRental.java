@@ -29,6 +29,7 @@ public class CustomerRental {
     String result = "Rental Record for " + getName() + "\n";
     
     for (Rental each : _rentals) {
+      //Refactored: call the extracted method getAmount()
       double thisAmount = getPrice(each);
        // add frequent renter points
       frequentRenterPoints++;
@@ -47,6 +48,7 @@ public class CustomerRental {
     return result;
   }// end of statement method
 
+  // Refactored: this method is extracted from method statement()
   private double getPrice(Rental aRental) {
     double thisAmount = 0;
     

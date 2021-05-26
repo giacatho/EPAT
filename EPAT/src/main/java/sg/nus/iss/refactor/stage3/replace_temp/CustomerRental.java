@@ -27,7 +27,6 @@ public class CustomerRental {
     // Refactored: Replace temp variables with queries
     // double totalAmount = 0;
     // int frequenRenterPoints = 0;
-    
     String result = "Rental Record for " + getName() + "\n";
     
     for (Rental each : _rentals) {
@@ -41,6 +40,8 @@ public class CustomerRental {
     return result;
   }// end of statement method
   
+  // Refactored: replace temp variable 'frequentRenterPoints'  
+  // in statement() with this query
   private int getFrequentRenterPoints() {
     int frequentRenterPoints = 0;
     
@@ -54,6 +55,8 @@ public class CustomerRental {
     return frequentRenterPoints;
   }
   
+  // Refactored: Replace temp variable 'totalAmount'  
+  // in statement() with this query
   private double getTotalAmount() {
     double totalAmount = 0;
     
