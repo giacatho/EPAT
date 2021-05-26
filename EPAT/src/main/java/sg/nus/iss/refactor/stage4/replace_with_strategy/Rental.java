@@ -3,10 +3,16 @@ package sg.nus.iss.refactor.stage4.replace_with_strategy;
 public class Rental {
   private Movie _movie;
   private int _daysRented;
+  // Refactored: keep a reference of IRentalPriceComputer,
+  // which will computes the price instead of complex switch-case statements
+  private IRentalPriceComputer _rentalPriceComputer;
   
   public Rental(Movie movie, int daysRented) {
     _movie = movie;
     _daysRented = daysRented;
+    
+    // Refactored: set the right IRentalPriceComputer
+    setRentalPriceComputer(_movie.getCategory());
   }
 
   public int getDaysRented() {
@@ -17,29 +23,28 @@ public class Rental {
     return _movie;
   }
   
-  public double getPrice() {
-    // Refactored: keep a reference of IRentalPriceComputer,
-    // asking it to compute the price instead of
-    // computing the price in the complex switch-case statements
-    IRentalPriceComputer rentalPriceComputer = null;
-    
-    switch (getMovie().getCategory()) {
+  // Refactored: set the right IRentalPriceComputer
+  // based on the category
+  private void setRentalPriceComputer(int category) {
+    switch (category) {
     case Movie.REGULAR:
-      rentalPriceComputer = new RegularRentalPriceComputer();
+      _rentalPriceComputer = new RegularRentalPriceComputer();
       break;
-
+    
     case Movie.NEW_RELEASE:
-      rentalPriceComputer = new NewRentalPriceComputer();
+      _rentalPriceComputer = new NewRentalPriceComputer();
       break;
       
     case Movie.CHILDRENS:
-      rentalPriceComputer = new ChildrenRentalPriceComputer();
+      _rentalPriceComputer = new ChildrenRentalPriceComputer();
       break;
-    
-      default:
-        throw new IllegalArgumentException("Invalid movie category");
     }
-      
-    return rentalPriceComputer.computePrice(_daysRented);
+  }
+  
+  public double getPrice() {
+    // Refactored: replace the complex switch-case 
+    // statements based on the type code with a hierarchy
+    // of classes
+    return _rentalPriceComputer.computePrice(_daysRented);
   }
 }
