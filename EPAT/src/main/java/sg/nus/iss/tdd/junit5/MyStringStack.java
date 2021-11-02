@@ -1,4 +1,4 @@
-package sg.nus.iss.tdd;
+package sg.nus.iss.tdd.junit5;
 
 import java.util.ArrayList;
 import java.util.List;

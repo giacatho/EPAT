@@ -23,29 +23,29 @@ public class CustomerRental {
     return _name;
   }
 
-  public String statement() {
-    double totalAmount = 0;
-    int frequentRenterPoints = 0;
-    String result = "Rental Record for " + getName() + "\n";
-    
-    for (Rental each : _rentals) {
-      // Refactored: call each rental's getPrice()
-      double thisAmount = each.getPrice();
-       // add frequent renter points
+public String statement() {
+  double totalAmount = 0;
+  int frequentRenterPoints = 0;
+  String result = "Rental Record for " + getName() + "\n";
+
+  for (Rental each : _rentals) {
+    // Refactored: call each rental's getPrice()
+    double thisAmount = each.getPrice();
+    // add frequent renter points
+    frequentRenterPoints++;
+
+    // add bonus for a two day new release rental
+    if ((each.getMovie().getCategory() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)
       frequentRenterPoints++;
+    // show figures for this rental
+    result += each.getMovie().getTitle() + "\t" + thisAmount + "\n";
+    totalAmount += thisAmount;
+  } // end of while loop
 
-      // add bonus for a two day new release rental
-      if ((each.getMovie().getCategory() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)
-        frequentRenterPoints++;
-      // show figures for this rental
-      result += each.getMovie().getTitle() + "\t" + thisAmount + "\n";
-      totalAmount += thisAmount;
-    } // end of while loop
-
-    // add footer lines
-    result += "Amount owed is " + totalAmount + "\n";
-    result += "You earned " + frequentRenterPoints + " frequent renter points";
-    return result;
-  }// end of statement method
+  // add footer lines
+  result += "Amount owed is " + totalAmount + "\n";
+  result += "You earned " + frequentRenterPoints + " frequent renter points";
+  return result;
+}// end of statement method
 
 } // end of CustomerRental class

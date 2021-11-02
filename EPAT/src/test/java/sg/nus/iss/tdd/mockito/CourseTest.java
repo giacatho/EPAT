@@ -9,7 +9,6 @@ import static org.mockito.Mockito.when;
 import org.junit.Before;
 import org.junit.Test;
 
-
 public class CourseTest {
   private INameList mockedList;
   private Course course;
@@ -36,17 +35,15 @@ public class CourseTest {
 
   @Test
   public void testGetAttendee() {
-    when(mockedList.getName(0))
-          .thenReturn("Alice");
-    when(mockedList.getName(1))
-          .thenReturn("Bob");
-    when(mockedList.getName(-1))
-          .thenThrow(new RuntimeException());
+    when(mockedList.getName(0)).thenReturn("Alice");
+    when(mockedList.getName(1)).thenReturn("Bob");
+    when(mockedList.getName(-1)).thenThrow(new RuntimeException());
 
     assertEquals("Bob", course.getAttendee(1));
     try {
       course.getAttendee(-1);
       fail();
-    } catch (RuntimeException e) {}
+    } catch (RuntimeException e) {
+    }
   }
 }

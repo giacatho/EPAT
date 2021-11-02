@@ -28,7 +28,7 @@ public class CustomerRental {
     // double totalAmount = 0;
     // int frequenRenterPoints = 0;
     String result = "Rental Record for " + getName() + "\n";
-    
+
     for (Rental each : _rentals) {
       // show figures for this rental
       result += each.getMovie().getTitle() + "\t" + each.getPrice() + "\n";
@@ -39,33 +39,33 @@ public class CustomerRental {
     result += "You earned " + getFrequentRenterPoints() + " frequent renter points";
     return result;
   }// end of statement method
-  
-  // Refactored: replace temp variable 'frequentRenterPoints'  
-  // in statement() with this query
-  private int getFrequentRenterPoints() {
-    int frequentRenterPoints = 0;
-    
-    for (Rental each : _rentals) {
-      frequentRenterPoints++;
 
-      if ((each.getMovie().getCategory() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)
-        frequentRenterPoints++;
-    } 
-    
-    return frequentRenterPoints;
+// Refactored: replace temp variable 'frequentRenterPoints'
+// in statement() with this query
+private int getFrequentRenterPoints() {
+  int frequentRenterPoints = 0;
+
+  for (Rental each : _rentals) {
+    frequentRenterPoints++;
+
+    if ((each.getMovie().getCategory() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)
+      frequentRenterPoints++;
   }
-  
-  // Refactored: Replace temp variable 'totalAmount'  
-  // in statement() with this query
-  private double getTotalAmount() {
-    double totalAmount = 0;
-    
-    for (Rental each : _rentals) {
-      double thisAmount = each.getPrice();
-      totalAmount += thisAmount;
-    } // end of while loop
-    
-    return totalAmount;
-  }
+
+  return frequentRenterPoints;
+}
+
+// Refactored: Replace temp variable 'totalAmount'
+// in statement() with this query
+private double getTotalAmount() {
+  double totalAmount = 0;
+
+  for (Rental each : _rentals) {
+    double thisAmount = each.getPrice();
+    totalAmount += thisAmount;
+  } // end of while loop
+
+  return totalAmount;
+}
 
 } // end of CustomerRental class

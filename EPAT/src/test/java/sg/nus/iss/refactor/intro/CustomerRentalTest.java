@@ -5,11 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class CustomerRentalTest {
-  private final String CUSTOMER_NAME = "Alex";
-  private final String REGULAR_MOVIE_NAME = "Regular movie";
-  private final String CHILDREN_MOVIE_NAME = "Children movie";
-  private final String NEW_RELEASE_MOVIE_NAME = "New release movie";
+  private final String CUSTOMER_NAME = "Alex Tan";
+  private final String REGULAR_MOVIE_NAME = "It's A Wonderful Life";
+  private final String CHILDREN_MOVIE_NAME = "Peter Pan";
+  private final String NEW_RELEASE_MOVIE_NAME = "The New Batman Movie";
   
+  public Rental createRental(int days, int categoryCode) {
+    return new Rental(new Movie(getMovieName(categoryCode), categoryCode), days);
+  }
   
   @Test
   public void renting_2_days_regular_statement() {
@@ -46,7 +49,8 @@ public class CustomerRentalTest {
                       "Amount owed is " + 1.5 + "\n" +
                       "You earned " + 1 + " frequent renter points";
     assertEquals(expexted, cr.statement());
-  }
+  } 
+  // Many more test cases
   
   @Test
   public void renting_4_days_children_statement() {
@@ -79,18 +83,18 @@ public class CustomerRentalTest {
     cr.addRental(createRental(5, Movie.CHILDRENS));
     cr.addRental(createRental(3, Movie.NEW_RELEASE));
     
-    String expexted = "Rental Record for " + CUSTOMER_NAME + "\n" +
+    String expected = "Rental Record for " + CUSTOMER_NAME + "\n" +
                       REGULAR_MOVIE_NAME + "\t" + 2.0 + "\n" +
                       CHILDREN_MOVIE_NAME + "\t" + 4.5 + "\n" +
                       NEW_RELEASE_MOVIE_NAME + "\t" + 9.0 + "\n" +
                       "Amount owed is " + 15.5 + "\n" +
                       "You earned " + 4 + " frequent renter points";
-    assertEquals(expexted, cr.statement());
+    
+    System.out.print(expected);
+    
+    assertEquals(expected, cr.statement());
   }
   
-  public Rental createRental(int days, int categoryCode) {
-    return new Rental(new Movie(getMovieName(categoryCode), categoryCode), days);
-  }
   
   private String getMovieName(int categoryCode) {
     switch (categoryCode) {
