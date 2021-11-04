@@ -59,7 +59,7 @@ public class CustomerRental {
       // show figures for this rental
       result += each.getMovie().getTitle() + "\t" + thisAmount + "\n";
       totalAmount += thisAmount;
-    } // end of while loop
+    } // end of loop
 
     // add footer lines
     result += "Amount owed is " + totalAmount + "\n";

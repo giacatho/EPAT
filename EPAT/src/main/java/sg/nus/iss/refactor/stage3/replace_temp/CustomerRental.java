@@ -32,7 +32,7 @@ public class CustomerRental {
     for (Rental each : _rentals) {
       // show figures for this rental
       result += each.getMovie().getTitle() + "\t" + each.getPrice() + "\n";
-    } // end of while loop
+    } // end of loop
 
     // add footer lines
     result += "Amount owed is " + getTotalAmount() + "\n";
@@ -63,7 +63,7 @@ private double getTotalAmount() {
   for (Rental each : _rentals) {
     double thisAmount = each.getPrice();
     totalAmount += thisAmount;
-  } // end of while loop
+  } // end of loop
 
   return totalAmount;
 }
