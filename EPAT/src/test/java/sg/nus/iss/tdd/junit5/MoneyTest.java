@@ -1,30 +1,47 @@
 package sg.nus.iss.tdd.junit5;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import sg.nus.iss.tdd.junit5.Money;
 
 public class MoneyTest {
-	@Test
-	public void testEquals() {
-		Money m12CHF = new Money(12, "CHF");
-		Money m14CHF = new Money(14, "CHF");
-		
-		assertTrue(!m12CHF.equals(null));
-		assertEquals(m12CHF, m12CHF);
-		assertEquals(m12CHF, new Money(12, "CHF"));
-		assertTrue(!m12CHF.equals(m14CHF));
-	}
-	
-	@Test
-	public void testSimpleAdd() {
-		Money m12CHF = new Money(12, "CHF");
-		Money m14CHF = new Money(14, "CHF");
-		Money m26CHF = new Money(26, "CHF");
-		
-		assertTrue(m26CHF.equals(m12CHF.add(m14CHF)), "Test simple add");
-	}
-	
+  @Test
+  public void same_currency_and_amount_is_equal() {
+    Money m1 = new Money(12, "SGD");
+    Money m2 = new Money(12, "SGD");
+
+    assertEquals(m1, m2);
+  }
+  
+  @Test
+  public void different_amount_is_not_equal() {
+    Money m1 = new Money(12, "SGD");
+    Money m2 = new Money(14, "SGD");
+
+    assertFalse(m1.equals(m2));
+  }
+
+  @Test
+  public void different_currency_is_not_equal() {
+    Money m1 = new Money(12, "SGD");
+    Money m2 = new Money(12, "USD");
+
+    assertFalse(m1.equals(m2));
+  }
+
+  
+
+  @Test
+  public void adding_same_currency_return_amount_added_up() {
+    Money m1 = new Money(12, "SGD");
+    Money m2 = new Money(14, "SGD");
+
+    Money sum = m1.add(m2);
+
+    assertEquals(new Money(26, "SGD"), sum);
+  }
 }
