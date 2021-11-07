@@ -1,9 +1,9 @@
 package sg.nus.iss.tdd.fake;
 
 public class ForexCalculator {
-  private ExchangeRateProvider erp;
+  private IExchangeRateProvider erp;
 
-  public ForexCalculator(ExchangeRateProvider erp) {
+  public ForexCalculator(IExchangeRateProvider erp) {
     this.erp = erp;
   }
 

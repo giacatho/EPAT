@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class TestForexCalculator {
   @Test
   public void testForexCalculator() {
-    ExchangeRateProvider erp = new FakeRateProvider();
+    IExchangeRateProvider erp = new FakeRateProvider();
     ForexCalculator f = new ForexCalculator(erp);
 
     double expected = 140;

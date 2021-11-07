@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class TestForexCalculatorUsingMock {
   @Test
   public void testUsingMock() {
-    ExchangeRateProvider erp = mock(ExchangeRateProvider.class);
+    IExchangeRateProvider erp = mock(IExchangeRateProvider.class);
     when(erp.getRate(anyString(), anyString())).thenReturn(1.4);
 
     ForexCalculator f = new ForexCalculator(erp);
