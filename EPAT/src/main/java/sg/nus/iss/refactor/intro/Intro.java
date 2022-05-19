@@ -2,9 +2,19 @@ package sg.nus.iss.refactor.intro;
 
 public class Intro {
   public static void main(String[] args) {
-    method16();
+//    method16();
+    printOddNumberAndStars();
   }
 
+  public static void printOddNumberAndStars() {
+    for (int oddNumber = 1; oddNumber <= 5; oddNumber+=2) {
+      System.out.print(oddNumber);
+      for (int star = 0; star < oddNumber; star++) {
+        System.out.print("*");
+      }
+      System.out.println();
+    }
+  }
 public static void method16() {
   for (int ironMan = 1; ironMan <= 9; ironMan++) {
     if (ironMan == 1) {
